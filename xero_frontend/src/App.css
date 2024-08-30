@@ -1,0 +1,74 @@
+/* Basic layout and font styling */
+.App {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+/* Header styling */
+h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #666;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+/* Table header and data cell styling */
+th, td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+/* Table header specific styling */
+th {
+  background-color: #f4f4f4;
+}
+
+/* Alternating row colors */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Section title styling */
+.section-title {
+  background-color: #e9ecef;
+  font-weight: bold;
+}
+
+/* Summary row styling */
+.summary-row {
+  font-weight: bold;
+  background-color: #f1f1f1;
+}
+
+/* Error message styling */
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+/* Loading message styling */
+.loading {
+  font-style: italic;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+  table {
+    font-size: 0.9rem;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+}
