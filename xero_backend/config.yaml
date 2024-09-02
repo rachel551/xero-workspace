@@ -1,6 +1,5 @@
 backend: 
-  balance_sheet_api_url : http://localhost:3000/api.xro/2.0/Reports/BalanceSheet
-  # balance_sheet_api_url : http://host.docker.internal:3000/api.xro/2.0/Reports/BalanceSheet
-  # xero_api_url : http://xero-api:3000/api.xro/2.0/Reports/BalanceSheet
-  flask_run_host: localhost
-  flask_run_port: 8080
+  local_balance_sheet_api_url : http://localhost:3000/api.xro/2.0/Reports/BalanceSheet
+  docker_balance_sheet_api_url : http://host.docker.internal:3000/api.xro/2.0/Reports/BalanceSheet
+  flask_run_host: '0.0.0.0'
+  flask_run_port: 8000

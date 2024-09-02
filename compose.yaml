@@ -1,0 +1,41 @@
+services:
+  xero-api:
+    image: jaypeng2015/show-me-the-money:latest
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+    restart: always
+
+  backend:
+    build:
+      context: ./xero_backend
+      dockerfile: Dockerfile
+    depends_on:
+      - xero-api
+    networks:
+      - app-network
+    environment:
+      - ENVIRONMENT=docker
+    entrypoint: ["./start_service.sh", "host.docker.internal", "3000", "/api.xro/2.0/Reports/BalanceSheet", "python", "application/app.py"]
+    ports:
+      - "8000:8000"
+    restart: always
+
+  frontend:
+    build:
+      context: ./xero_frontend
+      dockerfile: Dockerfile
+    depends_on:
+      - backend
+    networks:
+      - app-network
+    command: ["sh", "-c", "./start_frontend.sh && npm start"]
+    ports:
+      - "4000:4000"
+    restart: always
+
+networks:
+  app-network:
+    driver: bridge
+

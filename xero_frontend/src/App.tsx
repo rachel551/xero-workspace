@@ -29,8 +29,13 @@ const App: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/api/balance-sheet')
-      .then(response => response.json())
+    fetch('/data.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch data.json');
+        }
+        return response.json();
+      })
       .then((data: ApiResponse) => {
         console.log('API Response:', data);
         if (data.Reports && data.Reports.length > 0) {
@@ -39,7 +44,10 @@ const App: React.FC = () => {
           setError('No report data found');
         }
       })
-      .catch(error => setError(error.message));
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        setError(error.message);
+      });
   }, []);
 
   if (error) {
